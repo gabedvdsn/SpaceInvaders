@@ -32,8 +32,10 @@ public class EnemyController : MonoBehaviour
         ActOnInstruction();
     }
 
+    #region Executing Instructions
     private void ActOnInstruction()
     {
+        // Does not include internal instructions
         switch (currentInstructionType)
         {
             case EnemyInstructionType.GoAt:
@@ -45,19 +47,17 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyInstructionType.ProtectAt:
                 break;
-            case EnemyInstructionType.PrioritizeAt:
-                break;
-            case EnemyInstructionType.IgnoreAt:
-                break;
-            case EnemyInstructionType.LevelStatus:
-                break;
             case EnemyInstructionType.None:
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
     }
+    
+    #endregion
 
+    #region Receiving Instructions
+    
     public void SendInstruction(EnemyInstructionType instructionType, EnemyInstruction instruction)
     {
         // To prioritize ProtectAt: SendInstruction(EnemyInstructionType.Prioritize, EnemyInstruction(entity, EnemyInstructionType.ProtectAt))
@@ -111,24 +111,26 @@ public class EnemyController : MonoBehaviour
         LevelInstruction(instructionType);
         priorityInstructionType = instructionType;
     }
-    private void RemovePriority() => priorityInstructionType = EnemyInstructionType.None;
+    private void ClearPriorityInstruction() => priorityInstructionType = EnemyInstructionType.None;
 
     private void IgnoreInstruction(EnemyInstructionType instructionType)
     {
         LevelInstruction(instructionType);
         ignoreInstructionTypes.Add(instructionType);
     }
-    private void RemoveIgnores() => ignoreInstructionTypes.Clear();
+    private void ClearIgnoreInstructions() => ignoreInstructionTypes.Clear();
     
     private void LevelInstruction(EnemyInstructionType instructionType)
     {
-        priorityInstructionType = EnemyInstructionType.None;
+        ClearPriorityInstruction();
         ignoreInstructionTypes.Remove(instructionType);
     }
     private void LevelAllInstructions()
     {
-        RemovePriority();
-        RemoveIgnores();
+        ClearPriorityInstruction();
+        ClearIgnoreInstructions();
     }
+    
+    #endregion
     
 }
