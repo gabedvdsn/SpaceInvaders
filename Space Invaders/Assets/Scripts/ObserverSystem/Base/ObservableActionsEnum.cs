@@ -7,7 +7,7 @@ public enum ObservableActions
 {
     // Responding to in-game player interactions
     PlayerTakesDamage,
-    PlayerShootsBullet,
+    PlayerFires,
     PlayerDies,
     
     // Responding to player input
@@ -17,6 +17,6 @@ public enum ObservableActions
     
     // Responding to in-game enemy interactions
     EnemyTakesDamage,
-    EnemyShootsBullet,
+    EnemyFires,
     EnemyDies
 }

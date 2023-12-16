@@ -4,14 +4,18 @@ using UnityEngine;
 public class RotateTowards : MonoBehaviour
 {
     [SerializeField] private bool targetMouse;
-    [SerializeField] private GameObject target;
-
+    [SerializeField] private Transform target;
     [SerializeField] private float rotationSpeed;
 
     void Update()
     {
         Quaternion rotation = GetRotationQuaternion();
         transform.rotation = Quaternion.Slerp(transform.rotation, GetRotationQuaternion(), rotationSpeed * Time.deltaTime);
+    }
+
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
     }
 
     private Quaternion GetRotationQuaternion()
@@ -23,6 +27,6 @@ public class RotateTowards : MonoBehaviour
     
     private Vector2 GetTargetDirection()
     {
-        return (targetMouse ? Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) : target.transform.position) - transform.position;
+        return (targetMouse ? Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) : target.position) - transform.position;
     } 
 }

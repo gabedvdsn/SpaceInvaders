@@ -5,11 +5,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : ObservableSubject
 {
+    private bool acceptingInput = true;
+    
     public Player player;
     public ShootingController shooting;
+
+    public void SetAcceptingInput(bool flag)
+    {
+        acceptingInput = flag;
+    }
     
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!acceptingInput) return;
+        
         player.AddVelocity(context.ReadValue<Vector2>());
         ObserveOnMove(context);
     }
@@ -23,6 +32,10 @@ public class PlayerInputManager : ObservableSubject
 
     public void OnFire(InputAction.CallbackContext context)
     {
+        if (!acceptingInput) return;
+        
         if (context.performed) shooting.Shoot(player.transform.rotation);
     }
+
+    void ObserveFire(InputAction.CallbackContext context) => NotifyObservers(ObservableActions.PlayerFires);
 }

@@ -22,7 +22,7 @@ public class BaseState
 
     public virtual void Enter()
     {
-        entity.GetAnim().SetBool(stateName, true);
+        entity.GetAnimator().SetBool(stateName, true);
     }
 
     public void Update()
@@ -43,6 +43,6 @@ public class BaseState
 
     public virtual void Exit()
     {
-        entity.GetAnim().SetBool(stateName, false);
+        entity.GetAnimator().SetBool(stateName, false);
     }
 }

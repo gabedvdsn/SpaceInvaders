@@ -3,27 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletBehaviour : MonoBehaviour
+public class Bullet : Entity
 {
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float lifetime;
     [SerializeField] private LayerMask whatDestroysBullet;
 
-    private Rigidbody2D rb;
-
-    private void Awake()
+    private Entity sourceEntity;
+    
+    public override void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Start()
-    {
+        base.Start();
+        
         Destroy(gameObject, lifetime);
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
+        
         rb.velocity = -transform.up * bulletSpeed;
     }
 
@@ -44,18 +43,11 @@ public class BulletBehaviour : MonoBehaviour
         }
     }
 
-    public void OnShoot()
+    public void SetSourceEntity(Entity entity)
     {
-        // GetComponent<Rigidbody2D>().velocity = Vector2. * transform.eulerAngles * bulletSpeed;
+        sourceEntity = entity;
+        affiliation = entity.GetAffiliation();
     }
     
-    public void OnHit()
-    {
-        throw new System.NotImplementedException();
-    }
-    
-    public void OnDestroy()
-    {
-        
-    }
+    public override Entity Get() => sourceEntity;
 }

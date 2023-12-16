@@ -11,7 +11,7 @@ public class Managers : MonoBehaviour
     [HideInInspector] public PlayerInputManager PlayerInputManager;
     [HideInInspector] public AudioManager AudioManager;
     [HideInInspector] public FXManager FXManager;
-    [HideInInspector] public BackgroundManager BackgroundManager;
+    [HideInInspector] public EnemyManager EnemyManager;
     
     // Start is called before the first frame update
     void Start()
@@ -28,8 +28,7 @@ public class Managers : MonoBehaviour
             PlayerInputManager = GetComponentInChildren<PlayerInputManager>();
             AudioManager = GetComponentInChildren<AudioManager>();
             FXManager = GetComponentInChildren<FXManager>();
-            BackgroundManager = GetComponentInChildren<BackgroundManager>();
-
+            EnemyManager = GetComponentInChildren<EnemyManager>();
         }
     }
 

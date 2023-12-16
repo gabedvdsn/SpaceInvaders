@@ -22,7 +22,7 @@ public class PlayerState
 
     public virtual void Enter()
     {
-        player.GetAnim().SetBool(stateName, true);
+        player.GetAnimator().SetBool(stateName, true);
     }
 
     public void Update()
@@ -43,6 +43,6 @@ public class PlayerState
 
     public virtual void Exit()
     {
-        player.GetAnim().SetBool(stateName, false);
+        player.GetAnimator().SetBool(stateName, false);
     }
 }

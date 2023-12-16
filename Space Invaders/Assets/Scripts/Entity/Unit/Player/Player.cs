@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Entity
+public class Player : Unit
 {
     // States
     public PlayerStateMachine stateMachine;
@@ -30,9 +30,9 @@ public class Player : Entity
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        
+        base.Update();
     }
 
     public void SetStateTimer(float duration) => stateMachine.SetStateTimer(duration);
