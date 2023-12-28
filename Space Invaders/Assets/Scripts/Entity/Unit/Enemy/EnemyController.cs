@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
         switch (currentInstructionType)
         {
             case EnemyInstructionType.GoAt:
-                self.AddVelocity();
+                // self.AddVelocity();
                 break;
             case EnemyInstructionType.StandbyAt:
                 break;
