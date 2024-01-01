@@ -3,5 +3,5 @@
 
 public interface IFormation
 {
-    public FormationData GetTotalFormation();
+    // public FormationData GetTotalFormation();
 }

@@ -11,9 +11,9 @@ public static class Formations
 
     public static FormationData GetCircleFormation(FormationParameters parameters) => EquidistantRadially(parameters);
     
-    public static FormationData GetSquareAreaFormation(FormationParameters parameters) => ...;
+    // public static FormationData GetSquareAreaFormation(FormationParameters parameters) => ...;
     
-    public static FormationData GetCircleAreaFormation(FormationParameters parameters) => ...;
+    // public static FormationData GetCircleAreaFormation(FormationParameters parameters) => ...;
     
     private static FormationData EquidistantRadially(FormationParameters parameters)
     {
@@ -29,12 +29,12 @@ public static class Formations
         return new FormationData(parameters.size, vectors, FullMagnitudeFromVectorsRadial(parameters.size, parameters.magnitude));
     }
 
-    private static FormationData EquidistantArea(FormationParameters parameters)
+    /*private static FormationData EquidistantArea(FormationParameters parameters)
     {
         Vector2[] vectors = new Vector2[parameters.size];
         
         
-    }
+    }*/
     
     private static float[] UnitMagnitude(int size) => Enumerable.Range(1, size).Select(i => (float)i).ToArray();
     private static float[] FullMagnitudeFromVectorsRadial(int size, int radius) => Enumerable.Range(1, size).Select(_ => (float)radius).ToArray();
